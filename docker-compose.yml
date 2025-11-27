@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # PostgreSQL con PostGIS
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: ecoguard_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ecoguard
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ecoguard_network
+
+  # PgAdmin (opcional - interfaz web para administrar la BD)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: ecoguard_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ecoguard.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - ecoguard_network
+    profiles:
+      - tools
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  ecoguard_network:
+    driver: bridge

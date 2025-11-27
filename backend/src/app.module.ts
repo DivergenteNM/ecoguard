@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MunicipiosController } from './modules/municipios/municipios.controller';
+import { MunicipiosModule } from './modules/municipios/municipios.module';
 import { FenomenosModule } from './modules/fenomenos/fenomenos.module';
 import { EstacionesModule } from './modules/estaciones/estaciones.module';
 import { NdviModule } from './modules/ndvi/ndvi.module';
@@ -31,8 +31,9 @@ import { NdviModule } from './modules/ndvi/ndvi.module';
     FenomenosModule,
     EstacionesModule,
     NdviModule,
+    MunicipiosModule,
   ],
-  controllers: [AppController, MunicipiosController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

@@ -1,0 +1,25 @@
+{
+  "fecha_extraccion": "2025-11-27T10:32:53.708015",
+  "project_id": "gen-lang-client-0925028424",
+  "periodo": {
+    "inicio": "2024-01-01",
+    "fin": "2024-12-31"
+  },
+  "imagenes_procesadas": 128,
+  "nubosidad_maxima": 30,
+  "estadisticas": {
+    "NDVI_max": 0.6551192998886108,
+    "NDVI_mean": 0.31774814052301753,
+    "NDVI_min": -0.21513305604457855
+  },
+  "interpretacion": "Vegetación escasa",
+  "region": "Nariño, Colombia",
+  "bbox": [
+    -79.5,
+    0.5,
+    -76.5,
+    2.5
+  ],
+  "fuente": "Sentinel-2 Surface Reflectance (Google Earth Engine)",
+  "resolucion_espacial_m": 500
+}

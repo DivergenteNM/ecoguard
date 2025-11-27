@@ -148,6 +148,3 @@ Aquí verás la documentación interactiva (Swagger) donde puedes probar los end
 - 📅 **Próximos Pasos**: Desarrollo del servicio de IA y Frontend.
 
 ---
-
-**Desarrollado por**: [Tu Nombre / Equipo]
-**Licencia**: MIT

@@ -10,7 +10,8 @@ from psycopg2.extras import execute_values
 import os
 from dotenv import load_dotenv
 import logging
-from shapely.geometry import MultiPolygon, Polygon
+from shapely.geometry import MultiPolygon, Polygon, Point
+from shapely import wkt as shapely_wkt
 
 # Cargar configuración de base de datos
 env_path = os.path.join(os.path.dirname(__file__), '..', 'db_config.env')
@@ -96,17 +97,21 @@ class MunicipiosLoader:
                 read_path = f"zip://{file_path}!{zip_internal_path}"
                 logger.info(f"  📦 Leyendo {zip_internal_path} desde ZIP...")
             
-            # Intentar leer GeoJSON completo si existe
-            full_geojson_path = os.path.join(os.path.dirname(file_path), 'colombia_municipios_completo.json')
-            if os.path.exists(full_geojson_path):
-                read_path = full_geojson_path
-                logger.info("  📄 Usando GeoJSON completo de Colombia...")
+            # Intentar leer GeoJSON completo si existe (eliminar esta sección ya que ya no lo usamos)
+            # full_geojson_path = os.path.join(os.path.dirname(file_path), 'colombia_municipios_completo.json')
+            # if os.path.exists(full_geojson_path):
+            #     read_path = full_geojson_path
+            #     logger.info("  📄 Usando GeoJSON completo de Colombia...")
             
             gdf = gpd.read_file(read_path)
             logger.info(f"📊 {len(gdf)} registros leídos")
             
-            # Filtrar por Nariño
-            if 'dpt' in gdf.columns:
+            # Filtrar por Nariño - adaptado para diferentes formatos
+            if 'departamento' in gdf.columns:
+                logger.info("🔎 Filtrando por columna departamento = NARIÑO...")
+                gdf = gdf[gdf['departamento'].astype(str).str.upper().str.contains('NARIÑO|NARINO')]
+                logger.info(f"✅ {len(gdf)} municipios de Nariño encontrados")
+            elif 'dpt' in gdf.columns:
                 logger.info("🔎 Filtrando por columna dpt = NARIÑO...")
                 gdf = gdf[gdf['dpt'].astype(str).str.upper() == 'NARIÑO']
                 logger.info(f"✅ {len(gdf)} municipios de Nariño encontrados")
@@ -142,13 +147,21 @@ class MunicipiosLoader:
             
             count = 0
             for _, row in gdf.iterrows():
-                # Identificar columnas
-                nombre = row.get('name') or row.get('NOMBRE_GEO') or row.get('MPIO_CNMBR') or 'DESCONOCIDO'
-                codigo = row.get('id') or row.get('CODIGO_NOM') or row.get('MPIO_CCDGO') or None
-                dept = 'NARIÑO'
+                # Identificar columnas - adaptado para el nuevo formato de datos.gov.co
+                nombre = row.get('nombre') or row.get('name') or row.get('NOMBRE_GEO') or row.get('MPIO_CNMBR') or 'DESCONOCIDO'
+                codigo = row.get('codigo_dane') or row.get('id') or row.get('CODIGO_NOM') or row.get('MPIO_CCDGO') or None
+                dept = row.get('departamento') or 'NARIÑO'
                 
-                # Geometría
+                # Geometría - manejar Point, Polygon y MultiPolygon
                 geom = row.geometry
+                
+                # Si es un Point (centroide), crear un buffer pequeño para convertirlo a polígono
+                if isinstance(geom, Point):
+                    # Buffer de ~500 metros (0.005 grados ≈ 555 metros)
+                    geom = geom.buffer(0.005)
+                    logger.debug(f"Convertido Point a Polygon para {nombre}")
+                
+                # Convertir Polygon a MultiPolygon
                 if isinstance(geom, Polygon):
                     geom = MultiPolygon([geom])
                 
@@ -168,7 +181,7 @@ class MunicipiosLoader:
                     self.cursor.execute(sql, (codigo, nombre, dept, wkt))
                     count += 1
                 except Exception as e:
-                    logger.error(f"Error insertando {nombre}: {e}")
+                    logger.error(f"Error insertando {nombre} (código: {codigo}): {e}")
                     self.conn.rollback()
             
             self.conn.commit()

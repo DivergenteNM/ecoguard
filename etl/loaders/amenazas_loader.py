@@ -101,7 +101,10 @@ class AmenazasLoader:
             # Leer GeoJSON
             logger.info(f"🔄 Leyendo {geojson_file}...")
             gdf = gpd.read_file(geojson_file)
-            logger.info(f"📊 {len(gdf)} polígonos leídos")
+            logger.info(f"📊 {len(gdf)} geometrías leídas")
+            
+            # Las amenazas pueden ser polígonos o puntos, aceptamos ambos
+            logger.info(f"📐 {len(gdf)} geometrías válidas para cargar")
             
             # Asegurar CRS
             if gdf.crs is None:
@@ -122,8 +125,7 @@ class AmenazasLoader:
             
             count = 0
             for _, row in gdf.iterrows():
-                # Extraer datos
-                objectid = row.get('OBJECTID') or row.get('FID') or None
+                # Extraer datos - NO usar OBJECTID porque es demasiado grande
                 categoria = row.get(cat_col) if cat_col else 'DESCONOCIDO'
                 
                 # Calcular área en km²
@@ -136,18 +138,17 @@ class AmenazasLoader:
                 
                 wkt = geom.wkt
                 
-                # Insertar
+                # Insertar - omitir objectid, dejar que la BD genere el ID
                 sql = """
-                    INSERT INTO geo.zonas_amenaza (objectid, categoria, area_km2, geom)
-                    VALUES (%s, %s, %s, ST_Multi(ST_Force2D(ST_GeomFromText(%s, 4326))))
-                    ON CONFLICT DO NOTHING;
+                    INSERT INTO geo.zonas_amenaza (categoria, area_km2, geom)
+                    VALUES (%s, %s, ST_Multi(ST_Force2D(ST_GeomFromText(%s, 4326))));
                 """
                 
                 try:
-                    self.cursor.execute(sql, (objectid, str(categoria), area_km2, wkt))
+                    self.cursor.execute(sql, (str(categoria), area_km2, wkt))
                     count += 1
                 except Exception as e:
-                    logger.error(f"Error insertando polígono {objectid}: {e}")
+                    logger.error(f"Error insertando polígono: {e}")
                     self.conn.rollback()
                     continue
             

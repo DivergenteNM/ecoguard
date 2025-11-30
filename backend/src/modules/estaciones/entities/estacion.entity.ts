@@ -10,33 +10,43 @@ export class Estacion {
   codigoEstacion: string;
 
   @Column({ name: 'nombre_estacion', length: 200 })
-  nombre: string;
+  nombreEstacion: string;
 
-  @Column({ name: 'tipo_estacion', length: 100 })
-  tipo: string;
+  @Column({ name: 'tipo_estacion', length: 100, nullable: true })
+  tipoEstacion: string;
 
-  @Column({ name: 'municipio_normalizado', length: 100 })
+  @Column({ length: 100, nullable: true })
   municipio: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: true })
   departamento: string;
 
-  @Column({ type: 'numeric', precision: 10, scale: 7 })
+  @Column({ name: 'zona_hidrografica', length: 200, nullable: true })
+  zonaHidrografica: string;
+
+  @Column({ type: 'numeric', precision: 10, scale: 8, nullable: true })
   latitud: number;
 
-  @Column({ type: 'numeric', precision: 10, scale: 7 })
+  @Column({ type: 'numeric', precision: 11, scale: 8, nullable: true })
   longitud: number;
 
-  @Column({ name: 'elevacion_msnm', nullable: true })
-  elevacion: number;
-
-  @Column({ length: 50 })
+  @Column({ length: 50, nullable: true })
   estado: string;
+
+  @Column({ length: 200, nullable: true })
+  entidad: string;
 
   @Column({
     type: 'geometry',
     spatialFeatureType: 'Point',
     srid: 4326,
+    nullable: true,
   })
   geom: Point;
+
+  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @Column({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }

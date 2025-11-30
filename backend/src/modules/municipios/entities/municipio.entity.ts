@@ -12,13 +12,19 @@ export class Municipio {
   @Column({ length: 100 })
   nombre: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: true })
   departamento: string;
+
+  @Column({ name: 'area_km2', type: 'decimal', precision: 10, scale: 2, nullable: true })
+  areaKm2: number;
+
+  @Column({ nullable: true })
+  poblacion: number;
 
   @Column({ name: 'poblacion_total', nullable: true })
   poblacionTotal: number;
 
-  @Column({ name: 'año_poblacion', nullable: true })
+  @Column({ name: 'anio_poblacion', nullable: true })
   anioPoblacion: number;
 
   @Column({
@@ -27,4 +33,10 @@ export class Municipio {
     srid: 4326,
   })
   geom: MultiPolygon;
+
+  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @Column({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }

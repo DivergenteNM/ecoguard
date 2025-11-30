@@ -94,28 +94,24 @@ class EstacionesLoader:
                 record = (
                     str(row['codigoestacion']) if pd.notna(row.get('codigoestacion')) else None,
                     str(row['nombreestacion']) if pd.notna(row.get('nombreestacion')) else None,
-                    str(row['departamento']) if pd.notna(row.get('departamento')) else None,
+                    str(row['tipo_estacion']) if pd.notna(row.get('tipo_estacion')) else None,
                     str(row['municipio']) if pd.notna(row.get('municipio')) else None,
-                    str(row['zonahidrografica']) if pd.notna(row.get('zonahidrografica')) else None,
+                    str(row['departamento']) if pd.notna(row.get('departamento')) else 'NARIÑO',
                     float(row['latitud']) if pd.notna(row.get('latitud')) else None,
                     float(row['longitud']) if pd.notna(row.get('longitud')) else None,
-                    str(row['tipo_estacion']) if pd.notna(row.get('tipo_estacion')) else None,
-                    str(row['estado']) if pd.notna(row.get('estado')) else None,
-                    str(row['entidad']) if pd.notna(row.get('entidad')) else None
+                    str(row['estado']) if pd.notna(row.get('estado')) else None
                 )
                 records.append(record)
             
-            # SQL de inserción
+            # SQL de inserción simplificado
             insert_sql = """
                 INSERT INTO geo.estaciones (
-                    codigo_estacion, nombre_estacion, departamento, municipio,
-                    zona_hidrografica, latitud, longitud, tipo_estacion,
-                    estado, entidad
+                    codigo_estacion, nombre_estacion, tipo_estacion, municipio,
+                    departamento, latitud, longitud, estado
                 ) VALUES %s
                 ON CONFLICT (codigo_estacion) DO UPDATE SET
                     nombre_estacion = EXCLUDED.nombre_estacion,
-                    estado = EXCLUDED.estado,
-                    updated_at = CURRENT_TIMESTAMP;
+                    estado = EXCLUDED.estado;
             """
             
             # Insertar en lotes

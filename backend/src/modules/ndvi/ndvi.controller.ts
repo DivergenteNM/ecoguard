@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { NdviService } from './ndvi.service';
 
 @ApiTags('ndvi')
@@ -9,7 +9,23 @@ export class NdviController {
 
   @Get('latest')
   @ApiOperation({ summary: 'Obtener últimos datos NDVI procesados' })
+  @ApiResponse({ status: 200, description: 'Datos NDVI más recientes' })
+  @ApiResponse({ status: 404, description: 'No hay datos NDVI disponibles' })
   getLatest() {
     return this.ndviService.getLatest();
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Listar todos los registros NDVI' })
+  @ApiResponse({ status: 200, description: 'Lista de registros NDVI' })
+  getAll() {
+    return this.ndviService.getAll();
+  }
+
+  @Get('stats')
+  @ApiOperation({ summary: 'Estadísticas de datos NDVI' })
+  @ApiResponse({ status: 200, description: 'Estadísticas calculadas' })
+  getStats() {
+    return this.ndviService.getStats();
   }
 }

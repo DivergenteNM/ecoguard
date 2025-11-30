@@ -1,0 +1,1099 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.080712,
+          1.474978
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52019",
+        "nombre": "ALBÁN",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.700564,
+          0.882381
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52022",
+        "nombre": "ALDANA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.514512,
+          1.263276
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52036",
+        "nombre": "ANCUYA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.135467,
+          1.503418
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52051",
+        "nombre": "ARBOLEDA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.13765,
+          1.671733
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52079",
+        "nombre": "BARBACOAS",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.015619,
+          1.595681
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52083",
+        "nombre": "BELÉN",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.156463,
+          1.381453
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52110",
+        "nombre": "BUESACO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.281869,
+          1.360545
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52240",
+        "nombre": "CHACHAGÜÍ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.019777,
+          1.643878
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52203",
+        "nombre": "COLÓN",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.466136,
+          1.207854
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52207",
+        "nombre": "CONSACÁ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.549409,
+          0.910458
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52210",
+        "nombre": "CONTADERO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.517897,
+          0.854564
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52215",
+        "nombre": "CÓRDOBA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.728947,
+          0.862978
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52224",
+        "nombre": "CUASPUD CARLOSAMA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.792505,
+          0.906367
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52227",
+        "nombre": "CUMBAL",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.578616,
+          1.647163
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52233",
+        "nombre": "CUMBITARA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.110217,
+          2.479688
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52250",
+        "nombre": "EL CHARCO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.438522,
+          1.453567
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52254",
+        "nombre": "EL PEÑOL",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.33417,
+          1.745309
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52256",
+        "nombre": "EL ROSARIO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.097101,
+          1.427277
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52258",
+        "nombre": "EL TABLÓN DE GÓMEZ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.390772,
+          1.407913
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52260",
+        "nombre": "EL TAMBO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.658361,
+          2.040629
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52520",
+        "nombre": "FRANCISCO PIZARRO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.448913,
+          1.001159
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52287",
+        "nombre": "FUNES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.731589,
+          0.959744
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52317",
+        "nombre": "GUACHUCAL",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.549824,
+          1.129574
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52320",
+        "nombre": "GUAITARILLA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.568701,
+          0.919652
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52323",
+        "nombre": "GUALMATÁN",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.521227,
+          0.96952
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52352",
+        "nombre": "ILES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.496339,
+          1.05506
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52354",
+        "nombre": "IMUÉS",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.646367,
+          0.827732
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52356",
+        "nombre": "IPIALES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.970504,
+          1.601318
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52378",
+        "nombre": "LA CRUZ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.402882,
+          1.29753
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52381",
+        "nombre": "LA FLORIDA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.58091,
+          1.472892
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52385",
+        "nombre": "LA LLANADA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.189725,
+          2.398999
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52390",
+        "nombre": "LA TOLA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.131316,
+          1.600219
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52399",
+        "nombre": "LA UNIÓN",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.306135,
+          1.934453
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52405",
+        "nombre": "LEIVA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.523953,
+          1.350814
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52411",
+        "nombre": "LINARES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.521303,
+          1.494587
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52418",
+        "nombre": "LOS ANDES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.182924,
+          1.765633
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52427",
+        "nombre": "MAGÜÍ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.864549,
+          1.141037
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52435",
+        "nombre": "MALLAMA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.452992,
+          2.507139
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52473",
+        "nombre": "MOSQUERA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.357972,
+          1.288979
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52480",
+        "nombre": "NARIÑO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.325814,
+          2.347457
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52490",
+        "nombre": "OLAYA HERRERA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.566082,
+          1.058433
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52506",
+        "nombre": "OSPINA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.278795,
+          1.212352
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52001",
+        "nombre": "PASTO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.458686,
+          1.627196
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52540",
+        "nombre": "POLICARPA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.573003,
+          0.806639
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52560",
+        "nombre": "POTOSÍ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.596794,
+          1.237814
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52565",
+        "nombre": "PROVIDENCIA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.504211,
+          0.885125
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52573",
+        "nombre": "PUERRES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.636042,
+          0.870442
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52585",
+        "nombre": "PUPIALES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.995153,
+          1.212492
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52612",
+        "nombre": "RICAURTE",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.245716,
+          1.697492
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52621",
+        "nombre": "ROBERTO PAYÁN",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.594341,
+          1.335438
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52678",
+        "nombre": "SAMANIEGO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.764073,
+          1.807399
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52835",
+        "nombre": "SAN ANDRÉS DE TUMACO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0475,
+          1.513762
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52685",
+        "nombre": "SAN BERNARDO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.47313,
+          1.283438
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52683",
+        "nombre": "SANDONÁ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.21542,
+          1.503362
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52687",
+        "nombre": "SAN LORENZO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.013984,
+          1.669429
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52693",
+        "nombre": "SAN PABLO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.11941,
+          1.551572
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52694",
+        "nombre": "SAN PEDRO DE CARTAGO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.979916,
+          2.449653
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52696",
+        "nombre": "SANTA BÁRBARA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.677035,
+          1.222589
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52699",
+        "nombre": "SANTACRUZ",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.62028,
+          1.037536
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52720",
+        "nombre": "SAPUYES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.2808,
+          1.570358
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52786",
+        "nombre": "TAMINANGO",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.393735,
+          1.09482
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52788",
+        "nombre": "TANGUA",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.61672,
+          1.085044
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52838",
+        "nombre": "TÚQUERRES",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.400169,
+          1.115937
+        ]
+      },
+      "properties": {
+        "codigo_dane": "52885",
+        "nombre": "YACUANQUER",
+        "departamento": "NARIÑO",
+        "codigo_departamento": "52",
+        "tipo_municipio": "Municipio"
+      }
+    }
+  ]
+}

@@ -10,10 +10,30 @@ export class MunicipiosService {
     private municipiosRepository: Repository<Municipio>,
   ) {}
 
-  findAll() {
-    return this.municipiosRepository.find({
-      order: { nombre: 'ASC' },
-    });
+  async findAll(page: number = 1, limit: number = 64, nombre?: string) {
+    const queryBuilder = this.municipiosRepository
+      .createQueryBuilder('municipio')
+      .orderBy('municipio.nombre', 'ASC')
+      .skip((page - 1) * limit)
+      .take(limit);
+
+    if (nombre && nombre.trim()) {
+      queryBuilder.where('LOWER(municipio.nombre) LIKE LOWER(:nombre)', {
+        nombre: `%${nombre.trim()}%`,
+      });
+    }
+
+    const [data, total] = await queryBuilder.getManyAndCount();
+
+    return {
+      data,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
   }
 
   findOne(id: number) {
@@ -30,7 +50,7 @@ export class MunicipiosService {
       .createQueryBuilder('municipio')
       .select('SUM(municipio.poblacionTotal)', 'total')
       .getRawOne();
-      
+
     return {
       totalMunicipios: count,
       poblacionRegistrada: parseInt(population.total) || 0,

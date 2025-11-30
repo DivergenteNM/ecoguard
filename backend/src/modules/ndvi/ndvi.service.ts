@@ -1,33 +1,84 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import * as fs from 'fs';
-import * as path from 'path';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { NdviData } from './entities/ndvi-data.entity';
 
 @Injectable()
 export class NdviService {
-  private readonly dataPath = path.join(process.cwd(), '..', 'datasets', 'raw', 'ndvi');
+  constructor(
+    @InjectRepository(NdviData)
+    private ndviRepository: Repository<NdviData>,
+  ) {}
 
   async getLatest() {
-    try {
-      if (!fs.existsSync(this.dataPath)) {
-        throw new NotFoundException('Directorio de datos NDVI no encontrado');
-      }
+    const latest = await this.ndviRepository.find({
+      order: { fechaExtraccion: 'DESC' },
+      take: 1,
+    });
 
-      const files = fs.readdirSync(this.dataPath)
-        .filter(file => file.endsWith('.json'))
-        .sort((a, b) => {
-          return fs.statSync(path.join(this.dataPath, b)).mtime.getTime() - 
-                 fs.statSync(path.join(this.dataPath, a)).mtime.getTime();
-        });
-
-      if (files.length === 0) {
-        throw new NotFoundException('No hay datos NDVI disponibles');
-      }
-
-      const latestFile = files[0];
-      const content = fs.readFileSync(path.join(this.dataPath, latestFile), 'utf-8');
-      return JSON.parse(content);
-    } catch (error) {
-      throw new NotFoundException(`Error al leer datos NDVI: ${error.message}`);
+    if (!latest || latest.length === 0) {
+      throw new NotFoundException('No hay datos NDVI disponibles');
     }
+
+    const data = latest[0];
+
+    return {
+      id: data.id,
+      periodo: {
+        inicio: data.fechaInicio,
+        fin: data.fechaFin,
+      },
+      fechaExtraccion: data.fechaExtraccion,
+      estadisticas: {
+        ndviMax: parseFloat(data.ndviMax?.toString() || '0'),
+        ndviMean: parseFloat(data.ndviMean?.toString() || '0'),
+        ndviMin: parseFloat(data.ndviMin?.toString() || '0'),
+      },
+      interpretacion: data.interpretacion,
+      imagenesProcessadas: data.imagenesProcessadas,
+      nubosidadMaxima: data.nubosidadMaxima,
+      region: data.region,
+      fuente: data.fuente,
+      resolucionEspacialM: data.resolucionEspacialM,
+      metadata: data.metadata,
+    };
+  }
+
+  async getAll() {
+    const data = await this.ndviRepository.find({
+      order: { fechaExtraccion: 'DESC' },
+      select: [
+        'id',
+        'fechaInicio',
+        'fechaFin',
+        'fechaExtraccion',
+        'ndviMean',
+        'interpretacion',
+        'imagenesProcessadas',
+      ],
+    });
+
+    return data.map((item) => ({
+      id: item.id,
+      periodo: {
+        inicio: item.fechaInicio,
+        fin: item.fechaFin,
+      },
+      fechaExtraccion: item.fechaExtraccion,
+      ndviMean: parseFloat(item.ndviMean?.toString() || '0'),
+      interpretacion: item.interpretacion,
+      imagenesProcessadas: item.imagenesProcessadas,
+    }));
+  }
+
+  async getStats() {
+    const count = await this.ndviRepository.count();
+    const latest = await this.getLatest();
+
+    return {
+      totalRegistros: count,
+      ultimaExtraccion: latest.fechaExtraccion,
+      estadisticasRecientes: latest.estadisticas,
+    };
   }
 }

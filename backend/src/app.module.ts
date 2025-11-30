@@ -7,6 +7,10 @@ import { MunicipiosModule } from './modules/municipios/municipios.module';
 import { FenomenosModule } from './modules/fenomenos/fenomenos.module';
 import { EstacionesModule } from './modules/estaciones/estaciones.module';
 import { NdviModule } from './modules/ndvi/ndvi.module';
+import { AmenazasModule } from './modules/amenazas/amenazas.module';
+import { StatsModule } from './modules/stats/stats.module';
+import { MapModule } from './modules/map/map.module';
+import { PredictionsModule } from './modules/predictions/predictions.module';
 
 @Module({
   imports: [
@@ -32,6 +36,10 @@ import { NdviModule } from './modules/ndvi/ndvi.module';
     EstacionesModule,
     NdviModule,
     MunicipiosModule,
+    AmenazasModule,
+    StatsModule,
+    MapModule,
+    PredictionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

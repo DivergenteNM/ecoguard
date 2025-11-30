@@ -98,6 +98,7 @@ class FenomenosLoader:
             # Preparar datos
             records = []
             for _, row in df.iterrows():
+                # Mapeo completo de columnas CSV a Schema de DB
                 record = (
                     int(row['id_fenomeno']) if pd.notna(row.get('id_fenomeno')) else None,
                     str(row['municipio']) if pd.notna(row.get('municipio')) else None,
@@ -112,27 +113,27 @@ class FenomenosLoader:
                     str(row['nivel_riesgo']) if pd.notna(row.get('nivel_riesgo')) else None,
                     str(row['n_mero_informe']) if pd.notna(row.get('n_mero_informe')) else None,
                     pd.to_datetime(row['fecha_reporte_dt']) if pd.notna(row.get('fecha_reporte_dt')) else None,
-                    int(row['año']) if pd.notna(row.get('año')) else None,
+                    int(row['aÃ±o']) if pd.notna(row.get('aÃ±o')) else None,
                     int(row['mes']) if pd.notna(row.get('mes')) else None,
                     int(row['dia']) if pd.notna(row.get('dia')) else None,
                     int(row['dias_desde_evento']) if pd.notna(row.get('dias_desde_evento')) else None,
                     str(row['url_reporte']) if pd.notna(row.get('url_reporte')) else None,
                     bool(row['tiene_reporte']) if pd.notna(row.get('tiene_reporte')) else False,
-                    bool(row['coordenadas_validas']) if pd.notna(row.get('coordenadas_validas')) else False,
+                    bool(row['coordenadas_validas']) if pd.notna(row.get('coordenadas_validas')) else False
                 )
                 records.append(record)
             
-            # SQL de inserción
+            # SQL de inserción completo
             insert_sql = """
                 INSERT INTO public.fenomenos_naturales (
                     id_fenomeno, municipio, vereda, latitud, longitud, altura_msnm,
                     cuenca_hidrografica, tipo_fenomeno_original, tipo_fenomeno_normalizado,
                     categoria_fenomeno, nivel_riesgo, numero_informe, fecha_reporte,
-                    año, mes, dia, dias_desde_evento, url_reporte, tiene_reporte,
-                    coordenadas_validas
+                    año, mes, dia, dias_desde_evento, url_reporte, tiene_reporte, coordenadas_validas
                 ) VALUES %s
                 ON CONFLICT (id_fenomeno) DO UPDATE SET
                     municipio = EXCLUDED.municipio,
+                    fecha_reporte = EXCLUDED.fecha_reporte,
                     updated_at = CURRENT_TIMESTAMP;
             """
             

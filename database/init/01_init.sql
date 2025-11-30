@@ -121,6 +121,8 @@ CREATE TABLE IF NOT EXISTS geo.municipios (
     departamento VARCHAR(100),
     area_km2 DECIMAL(10, 2),
     poblacion INTEGER,
+    poblacion_total INTEGER,
+    anio_poblacion INTEGER,
     geom GEOMETRY(MultiPolygon, 4326),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

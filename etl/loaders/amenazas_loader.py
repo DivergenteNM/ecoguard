@@ -93,9 +93,16 @@ class AmenazasLoader:
                 logger.error("❌ No se encontró archivo GeoJSON de amenazas")
                 return 0
             
-            # Usar el más reciente
-            geojson_file = max(files, key=os.path.getctime)
-            logger.info(f"📄 Usando archivo: {os.path.basename(geojson_file)}")
+            # Priorizar archivo con "narino" en el nombre (más específico)
+            narino_files = [f for f in files if 'narino' in os.path.basename(f).lower()]
+            if narino_files:
+                geojson_file = max(narino_files, key=os.path.getctime)
+                logger.info(f"📄 Usando archivo específico de Nariño: {os.path.basename(geojson_file)}")
+            else:
+                # Si no hay archivo narino, usar el más reciente
+                geojson_file = max(files, key=os.path.getctime)
+                logger.info(f"📄 Usando archivo: {os.path.basename(geojson_file)}")
+
         
         try:
             # Leer GeoJSON
@@ -117,16 +124,25 @@ class AmenazasLoader:
                 logger.info("🗑️  Tabla truncada")
             
             # Identificar columnas relevantes
-            # Buscar columna de categoría/amenaza
-            cat_col = next((col for col in gdf.columns if 'AMENAZA' in col.upper() or 'CATEGORIA' in col.upper() or 'NIVEL' in col.upper()), None)
+            # Priorizar columnas específicas de SGC Nariño
+            cat_col = None
+            if 'CLAS_MAPA' in gdf.columns:
+                cat_col = 'CLAS_MAPA'  # Clasificación detallada (ej: "Deslizamiento rotacional")
+            elif 'TIPO' in gdf.columns:
+                cat_col = 'TIPO'  # Tipo general (ej: "Deslizamiento")
+            else:
+                # Buscar otras columnas de categoría
+                cat_col = next((col for col in gdf.columns if 'AMENAZA' in col.upper() or 'CATEGORIA' in col.upper() or 'NIVEL' in col.upper()), None)
             
             if not cat_col:
                 logger.warning("⚠️  No se encontró columna de categoría. Usando 'DESCONOCIDO'")
+            else:
+                logger.info(f"✅ Usando columna '{cat_col}' para categoría")
             
             count = 0
             for _, row in gdf.iterrows():
-                # Extraer datos - NO usar OBJECTID porque es demasiado grande
-                categoria = row.get(cat_col) if cat_col else 'DESCONOCIDO'
+                # Extraer datos
+                categoria = str(row.get(cat_col, 'DESCONOCIDO')) if cat_col else 'DESCONOCIDO'
                 
                 # Calcular área en km²
                 geom = row.geometry

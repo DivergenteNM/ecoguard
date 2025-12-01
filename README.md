@@ -338,11 +338,8 @@ docker logs -f ecoguard_postgres
 #### 2. Ejecutar Scripts SQL
 
 ```powershell
-# Script de inicialización
+# Script de inicialización (incluye estructura de población)
 docker exec -i ecoguard_postgres psql -U postgres -d ecoguard < database/init/01_init.sql
-
-# Agregar columnas de población
-docker exec -i ecoguard_postgres psql -U postgres -d ecoguard < database/scripts/02_add_population.sql
 
 # Crear tabla de amenazas
 docker exec -i ecoguard_postgres psql -U postgres -d ecoguard < database/scripts/03_create_amenazas_table.sql
@@ -370,6 +367,9 @@ python etl/extractors/fenomenos_extractor.py
 
 # Zonas de amenaza
 python etl/extractors/amenazas_sgc_extractor.py
+
+# Población DANE (requiere archivo Excel)
+python etl/extractors/poblacion_extractor.py
 ```
 
 #### 5. Transformación de Datos
@@ -394,7 +394,7 @@ python etl/loaders/estaciones_loader.py
 # Cargar fenómenos
 python etl/loaders/fenomenos_loader.py
 
-# Actualizar población
+# Actualizar población (requiere archivo CSV procesado)
 python etl/loaders/add_population.py
 
 # Cargar amenazas
@@ -633,8 +633,22 @@ curl -X POST http://localhost:3000/api/predictions/risk -H "Content-Type: applic
 
 ### 5. DANE (Departamento Administrativo Nacional de Estadística)
 - **Datos**: Población municipal (proyección 2024)
+- **Formato**: Archivo Excel (xlsx)
+- **Fuente**: `pob_municipios_narino.xlsx`
 - **Cobertura**: 64 municipios de Nariño
 - **Uso**: Estimación de población en riesgo
+- **ETL**: Extracción → CSV procesado → Actualización en PostgreSQL
+
+**Flujo ETL de Población:**
+```bash
+# 1. Extractor lee Excel y genera CSV limpio
+python etl/extractors/poblacion_extractor.py
+# Output: datasets/processed/poblacion_narino_2024.csv
+
+# 2. Loader actualiza registros en geo.municipios
+python etl/loaders/add_population.py
+# Actualiza: poblacion_total y anio_poblacion por nombre o código DANE
+```
 
 ---
 
@@ -1172,7 +1186,7 @@ ecoguard/
 │   ├── init/
 │   │   └── 01_init.sql                 # Esquemas + tablas
 │   └── scripts/
-│       ├── 02_add_population.sql       # Columnas población
+│       ├── 02_add_population.sql       # OBSOLETO - Usar ETL Python
 │       ├── 03_create_amenazas_table.sql
 │       └── 05_create_ndvi_table.sql
 │
@@ -1396,6 +1410,7 @@ pip install -r requirements.txt
 python extractors/estaciones_extractor.py
 python extractors/fenomenos_extractor.py
 python extractors/amenazas_sgc_extractor.py
+python extractors/poblacion_extractor.py
 python extractors/ndvi_extractor.py
 
 # Ejecutar transformers

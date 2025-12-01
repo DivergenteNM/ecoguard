@@ -196,15 +196,9 @@ if ($LASTEXITCODE -eq 0) {
     exit 1
 }
 
-# Script 02: Población inicial
-Write-Info "  → 02_add_population.sql: Agregando datos de población"
-Get-Content database/scripts/02_add_population.sql | docker exec -i ecoguard_postgres psql -U postgres -d ecoguard
-if ($LASTEXITCODE -eq 0) {
-    Write-Success "  [OK] Columnas de población agregadas"
-} else {
-    Write-Error "Error ejecutando 02_add_population.sql"
-    exit 1
-}
+# Nota: La población se cargará posteriormente con el ETL de Python
+Write-Info "  → Columnas de población ya están definidas en 01_init.sql"
+Write-Success "  [OK] Estructura de población lista (se poblará con ETL)"
 
 # Script 03: Tabla de amenazas
 Write-Info "  → 03_create_amenazas_table.sql: Creando tabla de amenazas"
@@ -309,9 +303,21 @@ if (-not $SkipExtraction) {
     # python etl/extractors/ndvi_extractor.py
     Write-Info "  [!] Extracción NDVI omitida (requiere autenticación GEE)"
     
+    # Población DANE
+    Write-Info "  → Extrayendo datos de población DANE..."
+    python etl/extractors/poblacion_extractor.py
+    if ($LASTEXITCODE -eq 0) {
+        Write-Success "  Datos de población DANE extraídos"
+    } else {
+        Write-Error "Error extrayendo datos de población"
+    }
+    
 } else {
     Write-Info "Omitiendo extracción de datos (--SkipExtraction)"
     Write-Info "Usando archivos existentes en datasets/raw/"
+    Write-Info ""
+    Write-Info "⚠️  IMPORTANTE: Si no tienes el archivo de población procesado,"
+    Write-Info "   ejecuta manualmente: python etl/extractors/poblacion_extractor.py"
 }
 
 # ============================================================================
@@ -389,12 +395,27 @@ if ($LASTEXITCODE -eq 0) {
 }
 
 # Cargar población
-Write-Info "  → Actualizando datos de población..."
-python etl/loaders/add_population.py
-if ($LASTEXITCODE -eq 0) {
-    Write-Success "  [OK] Datos de población actualizados"
+Write-Info "  → Actualizando datos de población (DANE 2024)..."
+
+# Verificar que exista el archivo procesado
+$poblacionCSV = "datasets/processed/poblacion_narino_2024.csv"
+if (Test-Path $poblacionCSV) {
+    python etl/loaders/add_population.py
+    if ($LASTEXITCODE -eq 0) {
+        # Verificar municipios con población
+        $pobCount = docker exec ecoguard_postgres psql -U postgres -d ecoguard -t -c "SELECT COUNT(*) FROM geo.municipios WHERE poblacion_total IS NOT NULL;" 2>$null
+        if ($pobCount -and $pobCount.Trim()) {
+            Write-Success "  [OK] Datos de población actualizados: $($pobCount.Trim()) municipios"
+        } else {
+            Write-Success "  [OK] Datos de población actualizados"
+        }
+    } else {
+        Write-Error "Error actualizando población"
+    }
 } else {
-    Write-Error "Error actualizando población"
+    Write-Info "  [!] Archivo $poblacionCSV no encontrado"
+    Write-Info "  [i] Ejecuta primero: python etl/extractors/poblacion_extractor.py"
+    Write-Info "  [i] O proporciona el archivo pob_municipios_narino.xlsx en datasets/raw/poblacion/"
 }
 
 # Cargar amenazas
@@ -563,20 +584,30 @@ $statsFenomenos = docker exec ecoguard_postgres psql -U postgres -d ecoguard -t 
 if (-not $statsFenomenos) { $statsFenomenos = "0" }
 $statsAmenazas = docker exec ecoguard_postgres psql -U postgres -d ecoguard -t -c "SELECT COUNT(*) FROM geo.zonas_amenaza;" 2>$null
 $statsNDVI = docker exec ecoguard_postgres psql -U postgres -d ecoguard -t -c "SELECT COUNT(*) FROM geo.ndvi_data;" 2>$null
+$statsPoblacion = docker exec ecoguard_postgres psql -U postgres -d ecoguard -t -c "SELECT COUNT(*) FROM geo.municipios WHERE poblacion_total IS NOT NULL;" 2>$null
+
+# Normalizar resultados (pueden venir como arrays)
+if ($statsMunicipios -is [array]) { $statsMunicipios = $statsMunicipios[0] }
+if ($statsEstaciones -is [array]) { $statsEstaciones = $statsEstaciones[0] }
+if ($statsFenomenos -is [array]) { $statsFenomenos = $statsFenomenos[0] }
+if ($statsAmenazas -is [array]) { $statsAmenazas = $statsAmenazas[0] }
+if ($statsNDVI -is [array]) { $statsNDVI = $statsNDVI[0] }
+if ($statsPoblacion -is [array]) { $statsPoblacion = $statsPoblacion[0] }
 
 Write-Output "  Municipios:        $($statsMunicipios.Trim()) registros"
 Write-Output "  Estaciones:        $($statsEstaciones.Trim()) registros"
 Write-Output "  Fenómenos:         $($statsFenomenos.Trim()) registros"
 Write-Output "  Zonas de Amenaza:  $($statsAmenazas.Trim()) registros"
 Write-Output "  Datos NDVI:        $($statsNDVI.Trim()) registros"
+Write-Output "  Con Población:     $($statsPoblacion.Trim()) municipios"
 Write-Output ""
 
-# Validar datos esperados
-$municipiosCount = [int]$statsMunicipios.Trim()
-$estacionesCount = [int]$statsEstaciones.Trim()
-$fenomenosCount = [int]$statsFenomenos.Trim()
-$amenazasCount = [int]$statsAmenazas.Trim()
-$ndviCount = [int]$statsNDVI.Trim()
+# Validar datos esperados (convertir a int de forma segura)
+$municipiosCount = if ($statsMunicipios) { [int]$statsMunicipios.Trim() } else { 0 }
+$estacionesCount = if ($statsEstaciones) { [int]$statsEstaciones.Trim() } else { 0 }
+$fenomenosCount = if ($statsFenomenos) { [int]$statsFenomenos.Trim() } else { 0 }
+$amenazasCount = if ($statsAmenazas) { [int]$statsAmenazas.Trim() } else { 0 }
+$ndviCount = if ($statsNDVI) { [int]$statsNDVI.Trim() } else { 0 }
 
 $warnings = @()
 if ($municipiosCount -lt 60) { $warnings += "  ⚠ Se esperaban al menos 60 municipios, se encontraron $municipiosCount" }
@@ -610,6 +641,9 @@ Write-Output ""
 Write-Output "  5. Ver logs de contenedores:"
 Write-Output "     docker logs ecoguard_postgres"
 Write-Output "     docker logs ecoguard_ai_service"
+Write-Output ""
+Write-Output "  6. Documentación ETL de Población:"
+Write-Output "     Ver: etl/README_POBLACION.md"
 Write-Output ""
 
 Write-ColorOutput Green "[OK] Setup completado! El sistema EcoGuard esta listo para usarse."

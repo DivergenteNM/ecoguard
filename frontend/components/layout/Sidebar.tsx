@@ -20,7 +20,7 @@ const Sidebar = () => {
     return (
         <div className="h-screen w-64 bg-slate-900 text-white flex flex-col fixed left-0 top-0">
             <div className="p-6 border-b border-slate-800">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+                <h1 className="text-2xl font-bold bg-linear-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
                     EcoGuard
                 </h1>
                 <p className="text-xs text-slate-400 mt-1">Guardia Ambiental Nacional</p>
@@ -48,13 +48,6 @@ const Sidebar = () => {
                     );
                 })}
             </nav>
-
-            <div className="p-4 border-t border-slate-800">
-                <button className="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-red-400 transition-colors w-full">
-                    <LogOut size={20} />
-                    <span className="font-medium">Cerrar Sesión</span>
-                </button>
-            </div>
         </div>
     );
 };

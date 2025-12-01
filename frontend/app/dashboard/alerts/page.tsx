@@ -40,7 +40,7 @@ export default function AlertsPage() {
       {/* Estadísticas del Modelo IA */}
       {!loadingModel && modelInfo && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-6 rounded-xl text-white shadow-lg">
+          <div className="bg-linear-to-br from-purple-500 to-purple-600 p-6 rounded-xl text-white shadow-lg">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <p className="text-purple-100 text-sm mb-1">Precisión del Modelo</p>
@@ -55,7 +55,7 @@ export default function AlertsPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-6 rounded-xl text-white shadow-lg">
+          <div className="bg-linear-to-br from-blue-500 to-blue-600 p-6 rounded-xl text-white shadow-lg">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <p className="text-blue-100 text-sm mb-1">Features Utilizadas</p>
@@ -68,7 +68,7 @@ export default function AlertsPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-xl text-white shadow-lg">
+          <div className="bg-linear-to-br from-orange-500 to-orange-600 p-6 rounded-xl text-white shadow-lg">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <p className="text-orange-100 text-sm mb-1">Tipos de Riesgo</p>
@@ -81,7 +81,7 @@ export default function AlertsPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 p-6 rounded-xl text-white shadow-lg">
+          <div className="bg-linear-to-br from-emerald-500 to-emerald-600 p-6 rounded-xl text-white shadow-lg">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <p className="text-emerald-100 text-sm mb-1">Datos Entrenamiento</p>
@@ -100,7 +100,7 @@ export default function AlertsPage() {
 
       {/* Formulario de Predicción */}
       {showPredictionForm && (
-        <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-xl border-2 border-purple-200 shadow-lg">
+        <div className="bg-linear-to-br from-purple-50 to-blue-50 p-6 rounded-xl border-2 border-purple-200 shadow-lg">
           <PredictionForm />
         </div>
       )}

@@ -40,7 +40,7 @@ export default function MapFilters({ filters, onFiltersChange, municipios = [] }
   const hasActiveFilters = Object.values(filters).some(v => v);
 
   return (
-    <div className="absolute top-4 left-4 z-[1000] bg-white rounded-lg shadow-lg border border-slate-200 w-80">
+    <div className="absolute top-4 left-4 z-1000 bg-white rounded-lg shadow-lg border border-slate-200 w-80">
       <div
         className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-slate-50 transition-colors"
         onClick={() => setIsExpanded(!isExpanded)}

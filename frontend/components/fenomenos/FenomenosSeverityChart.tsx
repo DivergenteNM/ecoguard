@@ -23,8 +23,12 @@ ChartJS.register(
   Legend
 );
 
-export default function FenomenosSeverityChart() {
-  const { data, isLoading } = useFenomenos({ page: 1, limit: 1000 });
+interface FenomenosSeverityChartProps {
+  fechaInicio?: string;
+}
+
+export default function FenomenosSeverityChart({ fechaInicio }: FenomenosSeverityChartProps) {
+  const { data, isLoading } = useFenomenos({ page: 1, limit: 1000, fechaInicio });
 
   if (isLoading) {
     return (
@@ -148,7 +152,7 @@ export default function FenomenosSeverityChart() {
       {tipoMasFrecuente && (
         <div className="mt-4 pt-4 border-t border-slate-100">
           <div className="flex items-start gap-2 text-sm">
-            <AlertCircle className="text-red-500 mt-0.5 flex-shrink-0" size={16} />
+            <AlertCircle className="text-red-500 mt-0.5 shrink-0" size={16} />
             <div>
               <span className="text-slate-600">Tipo más frecuente: </span>
               <span className="font-semibold text-slate-800">

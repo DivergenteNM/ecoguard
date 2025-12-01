@@ -144,25 +144,47 @@ export default function MapPage() {
           <h3 className="font-bold text-slate-800">Leyenda</h3>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-3">Fenómenos Naturales</h4>
+              <h4 className="text-sm font-semibold text-slate-700 mb-3">Fenómenos de Remoción</h4>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-red-600"></div>
+                  <div className="w-4 h-4 rounded-full bg-red-600 shadow-sm"></div>
                   <span className="text-sm text-slate-600">Deslizamientos</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-slate-600">Inundaciones / Avenidas</span>
+                  <div className="w-4 h-4 rounded-full bg-orange-600 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Movimiento en Masa</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-amber-600"></div>
+                  <div className="w-4 h-4 rounded-full bg-green-600 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Desliz. Rotacional</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-blue-600 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Desliz. Traslacional</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-slate-700 mb-3">Fenómenos Hídricos</h4>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-yellow-600 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Avenida Torrencial</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-blue-600 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Inundación</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-amber-600 shadow-sm"></div>
                   <span className="text-sm text-slate-600">Erosión / Socavación</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-slate-500"></div>
-                  <span className="text-sm text-slate-600">Otros fenómenos</span>
+                  <div className="w-4 h-4 rounded-full bg-purple-600 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Pérdida de Banca</span>
                 </div>
               </div>
             </div>
@@ -171,8 +193,12 @@ export default function MapPage() {
               <h4 className="text-sm font-semibold text-slate-700 mb-3">Zonas de Amenaza</h4>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-3 bg-amber-500 opacity-30 border-2 border-amber-700"></div>
+                  <div className="w-6 h-4 bg-amber-500 opacity-40 border-2 border-amber-600 rounded"></div>
                   <span className="text-sm text-slate-600">Áreas con susceptibilidad</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-slate-500 shadow-sm"></div>
+                  <span className="text-sm text-slate-600">Otros fenómenos</span>
                 </div>
               </div>
             </div>

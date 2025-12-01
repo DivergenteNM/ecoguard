@@ -20,14 +20,14 @@ const MapSelector = dynamic(() => import('./MapSelector'), {
 export default function PredictionForm() {
   const [selectedPosition, setSelectedPosition] = useState<LatLng | null>(null);
   const [mes, setMes] = useState(new Date().getMonth() + 1);
-  
+
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<RiskResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!selectedPosition) {
       setError('Por favor, selecciona una ubicación en el mapa');
       return;
@@ -84,8 +84,8 @@ export default function PredictionForm() {
           <label className="block text-sm font-medium text-slate-700 mb-2">
             📍 Selecciona la ubicación en el mapa
           </label>
-          <MapSelector 
-            selectedPosition={selectedPosition} 
+          <MapSelector
+            selectedPosition={selectedPosition}
             setSelectedPosition={setSelectedPosition}
           />
           {selectedPosition && (
@@ -106,7 +106,7 @@ export default function PredictionForm() {
           <select
             value={mes}
             onChange={(e) => setMes(parseInt(e.target.value))}
-            className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-base"
+            className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-base prediction-select"
             required
           >
             {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
@@ -138,7 +138,7 @@ export default function PredictionForm() {
 
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-          <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
+          <AlertCircle className="text-red-500 shrink-0 mt-0.5" size={20} />
           <div>
             <p className="font-medium text-red-800">Error en la predicción</p>
             <p className="text-sm text-red-600 mt-1">{error}</p>
@@ -188,7 +188,7 @@ export default function PredictionForm() {
                       </div>
                       <div className="bg-slate-100 rounded-full h-2 overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-500"
+                          className="h-full bg-linear-to-r from-purple-400 to-purple-600 transition-all duration-500"
                           style={{ width: `${pred.probabilidad * 100}%` }}
                         />
                       </div>

@@ -113,7 +113,7 @@ export default function AlertsList() {
           className={`border-2 rounded-xl p-6 transition-all hover:shadow-lg ${getLevelColor(alert.nivel)}`}
         >
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <div className={`w-12 h-12 rounded-full flex items-center justify-center ${alert.nivel === 'critico' ? 'bg-red-600' : alert.nivel === 'alto' ? 'bg-orange-600' : 'bg-yellow-600'}`}>
                 <AlertTriangle className="text-white" size={24} />
               </div>

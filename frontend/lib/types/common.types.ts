@@ -20,7 +20,7 @@ export interface ApiError {
 
 export type TrendType = 'up' | 'down' | 'neutral';
 
-export type ColorType = 'emerald' | 'blue' | 'amber' | 'red' | 'slate';
+export type ColorType = 'emerald' | 'blue' | 'amber' | 'red' | 'slate' | 'orange' | 'yellow' | 'green' | 'purple' | 'pink';
 
 export interface Point {
   type: 'Point';

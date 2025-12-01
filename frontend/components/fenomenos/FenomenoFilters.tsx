@@ -76,7 +76,12 @@ export default function FenomenoFilters({ filters, onFiltersChange }: FenomenoFi
 
         {hasActiveFilters && (
           <div className="mt-4 flex justify-end">
-            <Button variant="ghost" size="sm" onClick={handleClearFilters}>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={handleClearFilters}
+              className="text-slate-600 hover:text-red-600 hover:bg-red-50"
+            >
               <X size={16} className="mr-2" />
               Limpiar Filtros
             </Button>

@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { Fenomeno } from '@/lib/types/fenomeno.types';
 import { formatDate } from '@/lib/utils/dates';
-import { getFenomenoColor } from '@/lib/utils/colors';
+import { getFenomenoColor, getFenomenoLabel } from '@/lib/utils/colors';
 
 interface FenomenoCardProps {
   fenomeno: Fenomeno;
@@ -14,6 +14,7 @@ interface FenomenoCardProps {
 
 export default function FenomenoCard({ fenomeno, onClick }: FenomenoCardProps) {
   const color = getFenomenoColor(fenomeno.tipoFenomenoNormalizado || '');
+  const label = getFenomenoLabel(fenomeno.tipoFenomenoNormalizado || '');
 
   return (
     <Card 
@@ -27,14 +28,14 @@ export default function FenomenoCard({ fenomeno, onClick }: FenomenoCardProps) {
           </div>
           
           <div className="flex-1 min-w-0">
-            <div className="flex items-start justify-between gap-2 mb-2">
-              <h3 className="font-semibold text-slate-800 truncate">
-                {fenomeno.tipoFenomenoNormalizado}
-              </h3>
-              <Badge variant={color as any}>
-                {fenomeno.tipoFenomenoNormalizado}
+            <div className="flex items-center justify-between gap-2 mb-1">
+              <Badge variant={color} size="sm">
+                {label}
               </Badge>
             </div>
+            <h3 className="font-semibold text-slate-800 mb-2 leading-tight">
+              {fenomeno.tipoFenomenoNormalizado}
+            </h3>
 
             <div className="space-y-1 text-sm text-slate-600">
               <div className="flex items-center gap-2">

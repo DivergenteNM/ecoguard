@@ -27,8 +27,12 @@ ChartJS.register(
   Filler
 );
 
-export default function FenomenosTimeline() {
-  const { data, isLoading } = useFenomenos({ page: 1, limit: 1000 });
+interface FenomenosTimelineProps {
+  fechaInicio?: string;
+}
+
+export default function FenomenosTimeline({ fechaInicio }: FenomenosTimelineProps) {
+  const { data, isLoading } = useFenomenos({ page: 1, limit: 1000, fechaInicio });
 
   if (isLoading) {
     return (

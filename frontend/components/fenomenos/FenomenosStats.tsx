@@ -4,8 +4,12 @@ import { useFenomenos } from '@/lib/hooks/useFenomenos';
 import { AlertTriangle, TrendingUp, MapPin, Calendar } from 'lucide-react';
 import Skeleton from '@/components/ui/Skeleton';
 
-export default function FenomenosStats() {
-  const { data, isLoading } = useFenomenos({ page: 1, limit: 1000 }); // Obtener todos para estadísticas
+interface FenomenosStatsProps {
+  fechaInicio?: string;
+}
+
+export default function FenomenosStats({ fechaInicio }: FenomenosStatsProps) {
+  const { data, isLoading } = useFenomenos({ page: 1, limit: 1000, fechaInicio }); // Obtener todos para estadísticas
 
   if (isLoading) {
     return (

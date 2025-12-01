@@ -83,7 +83,7 @@ export default function ModelStats({ modelInfo, isLoading }: ModelStatsProps) {
               </div>
               <div className="bg-slate-100 rounded-full h-2.5 overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-500 rounded-full"
+                  className="h-full bg-linear-to-r from-purple-400 to-purple-600 transition-all duration-500 rounded-full"
                   style={{ width: `${importance * 100}%` }}
                 />
               </div>

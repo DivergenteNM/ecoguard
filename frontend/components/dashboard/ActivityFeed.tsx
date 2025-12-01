@@ -20,14 +20,19 @@ const ActivityFeed = () => {
 
     const getColorClass = (tipo: string) => {
         const color = getFenomenoColor(tipo);
-        const colorMap = {
+        const colorMap: Record<string, string> = {
             red: 'text-red-500 bg-red-50',
             blue: 'text-blue-500 bg-blue-50',
             amber: 'text-amber-500 bg-amber-50',
             emerald: 'text-emerald-500 bg-emerald-50',
             slate: 'text-slate-500 bg-slate-50',
+            orange: 'text-orange-500 bg-orange-50',
+            yellow: 'text-yellow-600 bg-yellow-50',
+            green: 'text-green-500 bg-green-50',
+            purple: 'text-purple-500 bg-purple-50',
+            pink: 'text-pink-500 bg-pink-50',
         };
-        return colorMap[color];
+        return colorMap[color] || colorMap.slate;
     };
 
     return (
@@ -41,7 +46,7 @@ const ActivityFeed = () => {
                     <div className="space-y-6">
                         {[...Array(4)].map((_, i) => (
                             <div key={i} className="flex gap-4">
-                                <Skeleton variant="circular" className="w-10 h-10 flex-shrink-0" />
+                                <Skeleton variant="circular" className="w-10 h-10 shrink-0" />
                                 <div className="flex-1 space-y-2">
                                     <Skeleton className="h-4 w-3/4" />
                                     <Skeleton className="h-3 w-1/2" />
@@ -56,7 +61,7 @@ const ActivityFeed = () => {
                             const Icon = getIcon(fenomeno.tipoFenomenoNormalizado || '');
                             return (
                                 <div key={fenomeno.id} className="flex gap-4">
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${getColorClass(fenomeno.tipoFenomenoNormalizado || '')}`}>
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${getColorClass(fenomeno.tipoFenomenoNormalizado || '')}`}>
                                         <Icon size={20} />
                                     </div>
                                     <div>

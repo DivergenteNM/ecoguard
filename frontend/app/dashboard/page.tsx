@@ -117,14 +117,14 @@ export default function DashboardPage() {
                                 <LoadingOverlay message="Cargando mapa..." />
                             </div>
                         ) : (
-                            <div className="h-[400px]">
-                                <InteractiveMap
-                                    fenomenosData={fenomenosGeo}
-                                    amenazasData={amenazasGeo}
-                                    showFenomenos={true}
-                                    showAmenazas={true}
-                                    zoom={8}
-                                />
+                            <div className="h-[600px]">
+                            <InteractiveMap
+                                fenomenosData={fenomenosGeo}
+                                amenazasData={amenazasGeo}
+                                showFenomenos={true}
+                                showAmenazas={true}
+                                zoom={8}
+                            />
                             </div>
                         )}
                     </div>

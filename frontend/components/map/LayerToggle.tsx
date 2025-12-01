@@ -16,7 +16,7 @@ interface LayerToggleProps {
 
 export default function LayerToggle({ layers, onToggle }: LayerToggleProps) {
   return (
-    <div className="absolute top-4 right-4 z-[1000] bg-white rounded-lg shadow-lg border border-slate-200 p-3 w-56">
+    <div className="absolute top-4 right-4 z-1000 bg-white rounded-lg shadow-lg border border-slate-200 p-3 w-56">
       <div className="flex items-center gap-2 mb-3 pb-3 border-b border-slate-100">
         <Layers size={18} className="text-slate-600" />
         <h3 className="text-sm font-semibold text-slate-800">Capas del Mapa</h3>

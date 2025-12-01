@@ -15,12 +15,12 @@ import { formatNumber, abbreviateNumber } from '@/lib/utils/formatters';
 
 // Importación dinámica del mapa para evitar SSR
 const InteractiveMap = dynamic(() => import('@/components/map/InteractiveMap'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[400px] bg-slate-100 rounded-lg flex items-center justify-center">
-      <LoadingOverlay message="Cargando mapa..." />
-    </div>
-  ),
+    ssr: false,
+    loading: () => (
+        <div className="w-full h-[400px] bg-slate-100 rounded-lg flex items-center justify-center">
+            <LoadingOverlay message="Cargando mapa..." />
+        </div>
+    ),
 });
 
 export default function DashboardPage() {
@@ -42,21 +42,9 @@ export default function DashboardPage() {
 
     return (
         <div className="space-y-8 pb-8">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-                <div>
-                    <h2 className="text-2xl font-bold text-slate-800">Resumen General</h2>
-                    <p className="text-slate-500">Bienvenido de nuevo, aquí está el estado actual de Nariño.</p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                    <select className="bg-white border border-slate-200 text-slate-700 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block p-2.5">
-                        <option>Últimos 7 días</option>
-                        <option>Último mes</option>
-                        <option>Este año</option>
-                    </select>
-                    <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors">
-                        Generar Reporte
-                    </button>
-                </div>
+            <div>
+                <h2 className="text-2xl font-bold text-slate-800">Resumen General</h2>
+                <p className="text-slate-500">Bienvenido de nuevo, aquí está el estado actual de Nariño.</p>
             </div>
 
             {/* Stats Grid */}
@@ -105,8 +93,8 @@ export default function DashboardPage() {
                     <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="font-bold text-slate-800">Mapa de Riesgo en Tiempo Real</h3>
-                            <Link 
-                                href="/dashboard/map" 
+                            <Link
+                                href="/dashboard/map"
                                 className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
                             >
                                 Ver mapa completo →
@@ -118,13 +106,13 @@ export default function DashboardPage() {
                             </div>
                         ) : (
                             <div className="h-[600px]">
-                            <InteractiveMap
-                                fenomenosData={fenomenosGeo}
-                                amenazasData={amenazasGeo}
-                                showFenomenos={true}
-                                showAmenazas={true}
-                                zoom={8}
-                            />
+                                <InteractiveMap
+                                    fenomenosData={fenomenosGeo}
+                                    amenazasData={amenazasGeo}
+                                    showFenomenos={true}
+                                    showAmenazas={true}
+                                    zoom={8}
+                                />
                             </div>
                         )}
                     </div>

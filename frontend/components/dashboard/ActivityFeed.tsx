@@ -1,6 +1,7 @@
 'use client';
 
 import { AlertTriangle, CloudRain, Droplets, Wind } from 'lucide-react';
+import Link from 'next/link';
 import { useFenomenos } from '@/lib/hooks/useFenomenos';
 import { formatRelativeTime } from '@/lib/utils/dates';
 import { getFenomenoColor } from '@/lib/utils/colors';
@@ -83,9 +84,11 @@ const ActivityFeed = () => {
                         <p className="text-sm">No hay fenómenos recientes</p>
                     </div>
                 )}
-                <button className="w-full mt-6 py-2 text-sm text-emerald-600 font-medium hover:bg-emerald-50 rounded-lg transition-colors">
+                <Link href="/dashboard/fenomenos">
+                  <button className="w-full mt-6 py-2 text-sm text-emerald-600 font-medium hover:bg-emerald-50 rounded-lg transition-colors">
                     Ver todo el historial
-                </button>
+                  </button>
+                </Link>
             </div>
         </div>
     );

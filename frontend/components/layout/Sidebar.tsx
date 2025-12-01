@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Map, Bell, Settings, LogOut, AlertTriangle, MapPin } from 'lucide-react';
+import { Home, Map, Bell, Settings, AlertTriangle, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 const Sidebar = () => {
@@ -30,7 +30,7 @@ const Sidebar = () => {
                 {navItems.map((item) => {
                     const Icon = item.icon;
                     const isActive = pathname === item.href;
-                    
+
                     return (
                         <Link
                             key={item.href}

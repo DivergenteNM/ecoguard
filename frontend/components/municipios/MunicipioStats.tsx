@@ -16,7 +16,7 @@ export default function MunicipioStats({ municipios }: MunicipioStatsProps) {
     const totalPoblacion = municipios.reduce((sum, m) => sum + (m.poblacionTotal || m.poblacion || 0), 0);
     const conPoblacion = municipios.filter(m => m.poblacionTotal || m.poblacion);
     const promedioPoblacion = conPoblacion.length > 0 ? totalPoblacion / conPoblacion.length : 0;
-    
+
     const masGrandes = municipios
       .filter(m => m.poblacionTotal || m.poblacion)
       .sort((a, b) => (b.poblacionTotal || b.poblacion || 0) - (a.poblacionTotal || a.poblacion || 0))
@@ -84,7 +84,7 @@ export default function MunicipioStats({ municipios }: MunicipioStatsProps) {
           labels={stats.masGrandes.map(m => m.nombre)}
           data={stats.masGrandes.map(m => m.poblacionTotal || m.poblacion || 0)}
           color="#2563EB"
-          height={350}
+          height={450}
         />
       )}
     </div>

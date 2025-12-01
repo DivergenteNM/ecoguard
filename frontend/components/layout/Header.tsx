@@ -22,7 +22,7 @@ const Header = () => {
 
                 <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
                     <div className="text-right hidden md:block">
-                        <p className="text-sm font-medium text-slate-700">Admin User</p>
+                        <p className="text-sm font-medium text-slate-700">Ing. EcoGuard</p>
                         <p className="text-xs text-slate-500">Administrador</p>
                     </div>
                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 border border-emerald-200">

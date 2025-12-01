@@ -5,7 +5,7 @@
 ![Status](https://img.shields.io/badge/status-Active-success?style=for-the-badge)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-316192?style=for-the-badge&logo=postgresql)
 ![NestJS](https://img.shields.io/badge/NestJS-11-E0234E?style=for-the-badge&logo=nestjs)
-![Next.js](https://img.shields.io/badge/Next.js-14-000000?style=for-the-badge&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?style=for-the-badge&logo=fastapi)
 
 **Sistema completo de análisis geoespacial, monitoreo y predicción de amenazas ambientales para el departamento de Nariño, Colombia**
@@ -33,6 +33,15 @@
 
 ---
 
+![alt text](docs/dashboard.png)
+
+
+![alt text](docs/fenomenos.png)
+
+
+
+![alt text](docs/alertas.png)
+
 ## 🎯 Descripción del Proyecto
 
 **EcoGuard** es una plataforma integral de análisis geoespacial y predicción de amenazas ambientales diseñada específicamente para el departamento de Nariño, Colombia. El sistema integra múltiples fuentes de datos gubernamentales y satelitales para proporcionar análisis en tiempo real, visualizaciones interactivas y predicciones de riesgos naturales basadas en inteligencia artificial.
@@ -51,7 +60,7 @@ EcoGuard centraliza datos históricos, análisis satelital y modelos predictivos
 
 ## ✨ Características Principales
 
-### 🌐 Frontend Interactivo (Next.js 14)
+### 🌐 Frontend Interactivo (Next.js 16)
 - **Dashboard principal** con estadísticas en tiempo real
 - **Mapa interactivo** con Leaflet mostrando fenómenos y zonas de riesgo
 - **Sistema de alertas inteligente** con predicciones de IA
@@ -469,7 +478,7 @@ npm run dev
 
 **Salida esperada:**
 ```
-▲ Next.js 14.0.0
+▲ Next.js 16.0.5
 - Local:        http://localhost:3001
 - ready started server on 0.0.0.0:3001
 ```
@@ -496,7 +505,7 @@ curl -X POST http://localhost:3000/api/predictions/risk -H "Content-Type: applic
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              FRONTEND (Next.js 14 + TypeScript)             │
+│              FRONTEND (Next.js 16 + TypeScript)             │
 │                      [Puerto 3001]                          │
 │  ┌──────────────────────────────────────────────────────┐  │
 │  │ Pages:                                                │  │
@@ -578,7 +587,7 @@ curl -X POST http://localhost:3000/api/predictions/risk -H "Content-Type: applic
 
 | Capa | Tecnologías | Versión |
 |------|-------------|---------|
-| **Frontend** | Next.js, TypeScript, Tailwind CSS | 14.0, 5.3, 3.4 |
+| **Frontend** | Next.js, TypeScript, Tailwind CSS | 16.0, 5.3, 3.4 |
 | **Mapas** | Leaflet, react-leaflet | 1.9, 4.2 |
 | **Gráficos** | Recharts, lucide-react | 2.9, 0.294 |
 | **Estado** | TanStack Query, Zustand | 5.8, 4.4 |
@@ -1026,7 +1035,7 @@ Para mejorar la precisión, se agrupan fenómenos similares:
 
 ```
 ecoguard/
-├── frontend/                # Next.js 14 Dashboard
+├── frontend/                # Next.js 16 Dashboard
 │   ├── app/
 │   │   ├── dashboard/
 │   │   │   ├── page.tsx              # Dashboard principal

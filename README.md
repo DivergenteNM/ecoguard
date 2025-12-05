@@ -19,6 +19,7 @@
 ## 📋 Tabla de Contenidos
 
 - [Descripción](#-descripción-del-proyecto)
+- [Presentación](#-presentación-del-proyecto)
 - [Características](#-características-principales)
 - [Requisitos](#-requisitos-previos)
 - [Instalación Rápida](#-instalación-rápida)
@@ -45,6 +46,24 @@
 ## 🎯 Descripción del Proyecto
 
 **EcoGuard** es una plataforma integral de análisis geoespacial y predicción de amenazas ambientales diseñada específicamente para el departamento de Nariño, Colombia. El sistema integra múltiples fuentes de datos gubernamentales y satelitales para proporcionar análisis en tiempo real, visualizaciones interactivas y predicciones de riesgos naturales basadas en inteligencia artificial.
+
+---
+### Presentación del Proyecto
+
+- Link para descargar la presentación en pdf
+[Click Link para descargar la presentación en pdf](https://drive.google.com/file/d/1bocIlrlNi4bnD5IgGndfvVyidwLMkX4e/view?usp=drive_link)
+
+- Link para visualizar la presentación en Canva
+[Click Link de la presentación en Canva](https://www.canva.com/design/DAG6UIPDkco/OU5UdurFWtC1loy3jt7FAQ)
+
+- Link URL de la publicación en la sección "Usos" de datos abiertos de MinTIC
+[Click URL de la publicación en la sección "Usos" de datos abiertos de MinTIC](https://herramientas.datos.gov.co/usos/ecoguard-colombia)
+
+El pdf de la presentación se encuenta en la carpeta /docs
+[PDF](<../../../Downloads/EcoGuard Presentación.pdf>)
+
+---
+
 
 ### Problemática que Resuelve
 
